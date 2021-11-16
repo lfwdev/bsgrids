@@ -1,6 +1,10 @@
 <template>
     <div>
         <div class="controls container">
+             <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text">Media Style</span>
+                <input type="text" v-model="mediaStyle" class="form-control">
+            </div>
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text"># Items</span>
                 <input type="text" v-model="value" class="form-control">
@@ -35,17 +39,21 @@
                 </small>
             </div>
         </div>
-        <div :class="containerClasses" :style="containerStyle"> 
-            <div :class="rowClasses" :style="rowStyle">
-                <template v-for="n in getNumberOfItems()" :key="'demo-' + n">
-                    <div :class="itemClasses + ' ' + getRandomBorderColor()" :style="itemStyle">
-                        <div class="bg-dark text-center text-white p-1">
-                            <b>
-                                {{ n }}
-                            </b>
-                        </div>
+        <div class="media-wrapper py-3" style="">
+            <div class="media m-auto" :style="mediaStyle">
+                <div :class="containerClasses" :style="containerStyle"> 
+                    <div :class="rowClasses" :style="rowStyle">
+                        <template v-for="n in getNumberOfItems()" :key="'demo-' + n">
+                            <div :class="itemClasses + ' ' + getRandomBorderColor()" :style="itemStyle">
+                                <div class="bg-dark text-center text-white p-1">
+                                    <b>
+                                        {{ n }}
+                                    </b>
+                                </div>
+                            </div>
+                        </template>
                     </div>
-                </template>
+                </div>
             </div>
         </div>
     </div>
@@ -55,10 +63,11 @@
 export default {
     data: function() {
         return {
+            mediaStyle: 'width: 720px !important; border: 1px dashed green;',
             containerClasses: 'container px-3',
-            containerStyle: 'border: 1px dashed red;',
+            containerStyle: 'border: 1px dashed red; background-color: rgba(255,0,0,0.2);',
             rowClasses: 'row row-cols-12 gx-0',
-            rowStyle: 'border: 1px dashed cyan;',
+            rowStyle: 'border: 1px dashed cyan; background-color: rgba(0,255,255,0.2);',
             itemClasses: 'border border-5 col-1',
             itemStyle: 'border-style: inset !important;',
             value: 48,
@@ -85,5 +94,10 @@ export default {
 </script>
 
 <style>
-
+ .media-wrapper {
+    border: none !important;
+    max-width:100vw; 
+    max-height:100vh; 
+    overflow: auto;
+ }
 </style>
