@@ -19,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/row-col',
     name: 'RowCol',
     component: () => import('../views/Row-col.vue')
+  },
+  {
+    path: '/playground',
+    name: 'Playground',
+    component: () => import('../views/Playground.vue')
   }
 ]
 
